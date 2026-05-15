@@ -1,0 +1,3 @@
+## 2026-05-15 - Optimizing nested loops with Set lookup
+**Learning:** In simple TypeScript assignment scripts where elements are checked inside nested array iterations like `some` inside `forEach`, performance degrades from O(N*M) time complexity. Using `Set` lookup for constant time performance is a scalable alternative while writing clean code without sacrificing readability.
+**Action:** When repeatedly looking up string values inside loops, pre-compute lowercased versions and save them in a Set. Use `Set.has()` instead of `Array.some` combined with multiple `toLowerCase()` conversions during iteration to change lookups from O(N*M) to O(N+M).
