@@ -1,0 +1,3 @@
+## 2024-05-17 - O(N*M) to O(N+M) Array Match Optimization
+**Learning:** In simple TypeScript scripts (like those in TS/EX-*), nested loops involving string manipulations (like `toLowerCase()`) are common and can be optimized. `Array.some()` inside `Array.forEach()` creates an O(N*M) complexity. Pre-computing normalized strings into a `Set` allows for O(1) lookups, changing the complexity to O(N+M).
+**Action:** When finding `Array.some()`, `Array.includes()`, or `Array.indexOf()` inside loops, check if the data being searched is static during the loop. If so, move the normalization outside the loop and store it in a `Set` for O(1) lookups.
