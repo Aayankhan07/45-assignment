@@ -4,9 +4,13 @@ let current_user=["Adeen","Aayan","Zayan","Farazan","Osama"]
 //New user
 let new_user=["Mahad","Amaan","Zayan","Bilal","Adeen"]
 
+// ⚡ Bolt: Convert to Set for O(1) lookup and pre-compute lowercased usernames to avoid O(n^2) nested loop.
+// Expected performance impact: Reduces search complexity from O(n*m) to O(n+m).
+const lowercasedCurrentUsers = new Set(current_user.map(user => user.toLowerCase()));
+
 //Loop through new user to check for username availablity
 new_user.forEach(new_one_user =>{
-    let our_condition= current_user.some(current_one_user=>current_one_user.toLowerCase()===new_one_user.toLowerCase())
+    let our_condition= lowercasedCurrentUsers.has(new_one_user.toLowerCase());
     if (our_condition)
     {
         console.log("Sorry " ,new_one_user,"is already taken!")
@@ -15,4 +19,4 @@ new_user.forEach(new_one_user =>{
         console.log("This username",new_one_user,"is available")
     }
 
-});``
+});

@@ -1,0 +1,3 @@
+## 2023-11-20 - Global Namespace Pollution in Standalone TypeScript Files
+**Learning:** TypeScript files in a directory lacking a module setup (no import/export or module config) are treated as global scripts. Creating scratchpad files with identical variable names (e.g., test.ts alongside main.ts) causes "Cannot redeclare block-scoped variable" compilation errors across the workspace.
+**Action:** Always clean up scratchpad files before running compilation checks for the whole repository, or ensure scratchpad files are either completely isolated or explicitly wrap logic in a module (`export {}`).
