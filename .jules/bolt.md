@@ -1,0 +1,1 @@
+## 2024-05-18 - No root tsconfig.json\n**Learning:** TypeScript files in `TS/` lack a global `tsconfig.json`. This causes modern features like `Set` to fail compilation unless `tsc --lib es2015,dom` is explicitly passed.\n**Action:** When compiling standalone TS files, explicitly define the library environment via flags.
