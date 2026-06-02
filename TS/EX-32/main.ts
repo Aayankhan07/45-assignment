@@ -1,12 +1,18 @@
-//Currnet users
-
+//Current users
 let current_user=["Adeen","Aayan","Zayan","Farazan","Osama"]
 //New user
 let new_user=["Mahad","Amaan","Zayan","Bilal","Adeen"]
 
+// ⚡ Bolt Optimization: Replace O(N*M) nested loop with O(N+M) Set lookup
+// Pre-computing lowercased current users prevents redundant .toLowerCase() calls
+// Expected Impact: Significantly faster lookups for large arrays.
+let current_user_lower = new Set(current_user.map(user => user.toLowerCase()));
+
 //Loop through new user to check for username availablity
 new_user.forEach(new_one_user =>{
-    let our_condition= current_user.some(current_one_user=>current_one_user.toLowerCase()===new_one_user.toLowerCase())
+    // O(1) Set lookup instead of O(M) Array.some()
+    let our_condition = current_user_lower.has(new_one_user.toLowerCase());
+
     if (our_condition)
     {
         console.log("Sorry " ,new_one_user,"is already taken!")
@@ -15,4 +21,4 @@ new_user.forEach(new_one_user =>{
         console.log("This username",new_one_user,"is available")
     }
 
-});``
+});
