@@ -1,0 +1,3 @@
+## 2023-10-25 - O(M * N) Nested Loops in TS Arrays
+**Learning:** Found an instance of `Array.some()` inside `Array.forEach()` causing O(M * N) complexity when checking availability against an array. Given there is no central `tsconfig.json` or bundler config, using modern ES6 like `Set` requires explicitly passing `--lib es2015,dom` to `tsc` during manual compilation of these standalone TS scripts to avoid build errors.
+**Action:** When performing optimizations that introduce newer ES APIs (like Sets or Maps for O(1) lookups) in environments without global TS configs, always verify compilation by explicitly adding the necessary library flags.
