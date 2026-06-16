@@ -1,0 +1,3 @@
+## 2024-05-14 - Optimizing O(N*M) Array Lookups to O(N+M) with Sets
+**Learning:** In simple TypeScript scripts (like in TS/EX-32/main.ts), nested iterations involving string manipulations (like `.toLowerCase()`) can be significant bottlenecks. Here, checking availability of new usernames against an existing list was done via `Array.some` inside a `forEach` loop, resulting in O(N*M) complexity.
+**Action:** Always consider converting the "haystack" array into a `Set` (pre-processing its elements, such as lowercasing them) before the loop. This reduces lookup time to O(1) per item, improving overall time complexity to O(N+M) without sacrificing readability.
