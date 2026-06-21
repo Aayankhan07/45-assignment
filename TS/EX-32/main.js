@@ -1,10 +1,15 @@
+"use strict";
 //Currnet users
-var current_user = ["Adeen", "Aayan", "Zayan", "Farazan", "Osama"];
+let current_user = ["Adeen", "Aayan", "Zayan", "Farazan", "Osama"];
 //New user
-var new_user = ["Mahad", "Amaan", "Zayan", "Bilal", "Adeen"];
+let new_user = ["Mahad", "Amaan", "Zayan", "Bilal", "Adeen"];
+// ⚡ Bolt Performance Optimization:
+// Converted O(n * m) nested loop using Array.prototype.some to O(n + m) lookups
+// using a Set for checking existing usernames case-insensitively.
+let currentUserLower = new Set(current_user.map(u => u.toLowerCase()));
 //Loop through new user to check for username availablity
-new_user.forEach(function (new_one_user) {
-    var our_condition = current_user.some(function (current_one_user) { return current_one_user.toLowerCase() === new_one_user.toLowerCase(); });
+new_user.forEach(new_one_user => {
+    let our_condition = currentUserLower.has(new_one_user.toLowerCase());
     if (our_condition) {
         console.log("Sorry ", new_one_user, "is already taken!");
     }
@@ -12,4 +17,4 @@ new_user.forEach(function (new_one_user) {
         console.log("This username", new_one_user, "is available");
     }
 });
-"";
+``;
