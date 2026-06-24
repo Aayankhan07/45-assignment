@@ -1,0 +1,3 @@
+## 2024-06-24 - Optimizing array lookups inside loops
+**Learning:** Found an O(N*M) lookup pattern where `Array.prototype.some` was being used inside `Array.prototype.forEach` to check for username existence in an array of usernames. This is a common performance bottleneck when checking against larger lists. Using a Set for O(1) lookups reduces time complexity from O(N*M) to O(N+M).
+**Action:** Always watch out for nested iterations (like `some`, `includes`, `find`, or `filter` inside loops). When matching or checking existence against a list inside a loop, pre-process the target list into a `Set` or hash map before the loop.
