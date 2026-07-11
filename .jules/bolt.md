@@ -1,0 +1,3 @@
+## 2024-07-11 - Optimized Array Inclusion Checks in TS Workspace Scripts
+**Learning:** Found O(N*M) inclusion checks in global TS scripts (e.g., TS/EX-32) checking string arrays against arrays inside `.some` array loops, which can drastically block execution for large arrays. TypeScript files compiled individually as scripts need careful scoping when optimizing.
+**Action:** Replaced `.some()` loops with `Set.has()` checks outside loops. Added compilation tests using `tsc --lib es2015,dom` since Set is not in default tsconfig. Added optimization comments to comply with Bolt's performance ethos.
