@@ -1,0 +1,3 @@
+## 2024-07-18 - Nested Array Iteration Optimization in TypeScript Lookups
+**Learning:** In TypeScript/JavaScript arrays, performing an `Array.some` or `Array.includes` inside an `Array.forEach` for mapping or looking up values leads to O(n*m) complexity. The previous implementation checked username availability by repeatedly iterating through `current_user` for each `new_user`.
+**Action:** Always refactor nested array lookups by pre-computing a `Set` for the array being searched (e.g., `new Set(arr.map(...))`). This transforms the time complexity to O(n+m) due to O(1) Set lookups, significantly improving performance on larger datasets.
