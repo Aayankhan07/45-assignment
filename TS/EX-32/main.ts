@@ -4,9 +4,13 @@ let current_user=["Adeen","Aayan","Zayan","Farazan","Osama"]
 //New user
 let new_user=["Mahad","Amaan","Zayan","Bilal","Adeen"]
 
+// Convert to lowercase set for O(1) lookups
+const currentUserLower = new Set(current_user.map(user => user.toLowerCase()));
+
 //Loop through new user to check for username availablity
 new_user.forEach(new_one_user =>{
-    let our_condition= current_user.some(current_one_user=>current_one_user.toLowerCase()===new_one_user.toLowerCase())
+    // O(1) Set lookup instead of O(N) array some()
+    let our_condition = currentUserLower.has(new_one_user.toLowerCase());
     if (our_condition)
     {
         console.log("Sorry " ,new_one_user,"is already taken!")
@@ -15,4 +19,4 @@ new_user.forEach(new_one_user =>{
         console.log("This username",new_one_user,"is available")
     }
 
-});``
+});
