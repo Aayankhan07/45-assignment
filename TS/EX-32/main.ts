@@ -1,18 +1,21 @@
-//Currnet users
-
-let current_user=["Adeen","Aayan","Zayan","Farazan","Osama"]
+//Current users
+let current_user=["Adeen","Aayan","Zayan","Farazan","Osama"];
 //New user
-let new_user=["Mahad","Amaan","Zayan","Bilal","Adeen"]
+let new_user=["Mahad","Amaan","Zayan","Bilal","Adeen"];
 
-//Loop through new user to check for username availablity
+// Optimization: Pre-compute a Set of lowercased current usernames.
+// This reduces the time complexity from O(N * M) (using Array.some) to O(N + M) (using Set.has).
+let currentUserLower = new Set(current_user.map(u => u.toLowerCase()));
+
+//Loop through new user to check for username availability
 new_user.forEach(new_one_user =>{
-    let our_condition= current_user.some(current_one_user=>current_one_user.toLowerCase()===new_one_user.toLowerCase())
+    let our_condition = currentUserLower.has(new_one_user.toLowerCase());
     if (our_condition)
     {
-        console.log("Sorry " ,new_one_user,"is already taken!")
+        console.log("Sorry " ,new_one_user,"is already taken!");
 
     }else{
-        console.log("This username",new_one_user,"is available")
+        console.log("This username",new_one_user,"is available");
     }
 
-});``
+});
